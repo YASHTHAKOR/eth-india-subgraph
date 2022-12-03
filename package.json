@@ -1,0 +1,23 @@
+{
+  "name": "eth-india-subgraph",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YASHTHAKOR/eth-india-subgraph.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YASHTHAKOR/eth-india-subgraph/issues"
+  },
+  "homepage": "https://github.com/YASHTHAKOR/eth-india-subgraph#readme",
+  "dependencies": {
+    "@graphprotocol/graph-cli": "^0.37.0",
+    "@graphprotocol/graph-ts": "^0.29.0"
+  }
+}

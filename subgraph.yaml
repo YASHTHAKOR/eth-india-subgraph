@@ -1,0 +1,50 @@
+specVersion: 0.0.4
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: Factory
+    network: matic
+    source:
+      address: "0x40fF656C5e925c9d244B006331fFb965DEa6aCA2"
+      abi: Factory
+      startBlock: 36375011
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - CollectionCreated
+        - CollectionForked
+      abis:
+        - name: Collection
+          file: ./abis/collection.json
+        - name: Factory
+          file: ./abis/factory.json
+      eventHandlers:
+        - event: CollectionCreated(address,string,address)
+          handler: handleCollectionCreation
+        - event: CollectionForked(address,string,address,address)
+          handler: handleCollectionForked
+      file: ./src/factory.ts
+templates:
+  - kind: ethereum/contract
+    name: Collection
+    network: matic
+    source:
+      abi: Collection
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Mint
+      abis:
+        - name: Collection
+          file: ./abis/collection.json
+        - name: Factory
+          file: ./abis/factory.json
+      eventHandlers:
+        - event: Mint(uint256)
+          handler: handleMint
+      file: ./src/collection.ts

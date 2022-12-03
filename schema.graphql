@@ -1,0 +1,15 @@
+type Collection @entity{
+    id: ID!
+    name: String!
+    owner: String!
+    children: Int!
+    parent: String
+    baseUrl: String
+    mint: Mint
+}
+
+type Mint @entity {
+    id: ID!
+    tokenId: Int!
+    collection: Collection @derivedFrom(field: "mint")
+}
