@@ -5,11 +5,11 @@ type Collection @entity{
     children: Int!
     parent: String
     baseUrl: String
-    mint: Mint
+    mint: [Mint!] @derivedFrom(field: "collection")
 }
 
 type Mint @entity {
     id: ID!
     tokenId: Int!
-    collection: Collection @derivedFrom(field: "mint")
+    collection: Collection!
 }

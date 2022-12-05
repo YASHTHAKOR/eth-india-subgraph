@@ -5,7 +5,7 @@ export function handleMint(event: MintEvent): void {
     let collectionAddress = event.address.toHexString();
     let tokenId = event.params.tokenId;
 
-    let mintId = collectionAddress + '-' + tokenId.toString();
+    let mintId = collectionAddress + '_' + tokenId.toString();
 
     let mintData = Mint.load(mintId);
     if(!mintData) {
